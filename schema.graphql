@@ -1,0 +1,176 @@
+enum Gender {
+  MALE,
+  FEMALE,
+  OTHERS,
+  PERFERED_NOT_SAY
+}
+
+
+type Contact{
+  label: Label 
+  value: Value
+}
+
+type Document {
+  id: ID!
+}
+type Country {
+  name: String
+  country_code: CountryCode
+}
+
+type Personal {
+  id: ID!
+  title: [Title]
+  first_name: String!
+  given_name: String!
+  middle_name: String
+  maiden_name: String
+  gender: Gender!
+  date_of_birth: Date!
+  skin_tone: Enum
+  eyes_color: String
+  height: Int
+  weight: Int
+  nationality: Enum!
+  created_on: DateTime
+  last_modified: DateTime
+  is_active: Boolean
+  is_deleted: Boolean
+}
+
+type Address {
+  address_line_one: String!
+  address_line_two: String!
+  street: String!
+  apt_building: String 
+  postal_code: String
+  state: String
+  providance: String!
+  country: Enum!
+  oid: Readonly!
+}
+
+
+type Institution {
+  id: ID!
+  name: String!
+  year_founded: Date!
+  contact: [Contact]
+}
+
+type Parent {
+  id: ID!
+  personal: Personal!
+  contacts: [Contact]
+}
+
+type Student {
+  id: ID!
+  personal: Personal!
+  contacts: [Json]
+}
+
+type Instructor {
+  id: ID!
+  personal: Personal
+  contacts: [Json]
+}
+
+type Administrator {
+  id: ID!
+  personal: Personal
+  contacts: [Contact]
+
+}
+
+type AcademicYear {
+  start_date: Date!
+  end_date: Date!
+  semester: Enum!
+}
+
+type Course {
+  title: String!
+  code: Int!
+  credit_hour: Int!
+  desc: String
+}
+
+type Campus {
+  id: ID!
+  name: String
+}
+type Building {
+  id: ID!
+  name: String
+  demension: Demension
+  flood: Int
+}
+type Room {
+  id: ID!
+  building: Building!
+  demension: Demension
+}
+
+type College {
+  id: ID!
+  name: String!
+}
+
+"""
+[
+  {
+    day: MON
+    start_time: '15:00'
+    end_time: '16:00'
+    break: [{
+      begin_after: 30
+      begin_after_unit: MIN
+      duration: 5
+      duration_unit: MIN
+    }]
+  }
+]
+"""
+
+type Schedule {
+  id: ID!
+  academic_year: AcademicYear!
+  schedule: Json!
+}
+
+type Class {
+  id: ID!
+  name: String
+}
+
+type Section {
+  id: ID!
+  name: String!
+  class: Class
+  academic_year: AcademicYear!
+}
+
+type Score  {
+  id: ID!
+  student: Student!
+  mark: Double!
+  activity: Activity!
+}
+
+type ClassActivity {
+  id: ID!
+  section: Section
+  type: ActivityType
+  instructor: Instructor
+  course: Course
+  schedule: Schedule
+  academic_year: AcademicYear
+}
+
+type ClassActivityPoint {
+  id: ID!
+  type: Type
+  point: Double
+}
