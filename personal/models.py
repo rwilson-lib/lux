@@ -97,7 +97,6 @@ class Personal(models.Model):
 
     def clean(self):
         errors={}
-
         if self.maiden_name is not None:
             if self.SINGLE == self.marital_status:
                 errors['maiden_name'] = _('Not allow for Single')
