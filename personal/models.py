@@ -1,10 +1,31 @@
-from django.db import models
 from django.core.exceptions import ValidationError
+from django.db import models
 from django.utils.translation import gettext_lazy as _
+import uuid
 
-from jsonschema import validate
-from jsonschema.exceptions import ValidationError as JsonValidationError
 # from db_mixing import TimeStampMixin
+
+class Address(models.Model):
+    address_line_one = models.CharField(max_length=255)
+    address_line_two = models.CharField(max_length=255, blank=True, null=True)
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    apt_building = models.CharField(max_length=255, blank=True, null=True)
+    postal_code = models.CharField(max_length=10, blank=True, null=True)
+    providence = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=2)
+
+    def __str__(self):
+        return self.address_line_one
+
+class Title(models.Model):
+    title = models.CharField(max_length=255)
+    abbr = models.CharField(max_length=10, null=True, blank=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title if self.abbr is None else self.abbr
 
 class Personal(models.Model):
     MALE = "M"
@@ -21,7 +42,6 @@ class Personal(models.Model):
     MARITAL_STATUS = [
         ( MARRIED, "Married" ),
         ( WIDOWED, "Widowed" ),
-        ( SEPARATED, "Separated" ),
         ( DIVORCED, "Divorced" ),
         ( SINGLE, "Single" ),
     ]
@@ -45,7 +65,8 @@ class Personal(models.Model):
         }
     }
 
-    titles = models.JSONField(null=True, blank=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    titles = models.ManyToManyField(Title, through='PersonalTitle')
     first_name = models.CharField(max_length=255)
     given_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, null=True, blank=True)
@@ -58,17 +79,24 @@ class Personal(models.Model):
     height  = models.CharField(max_length=255)
     weight = models.CharField(max_length=255)
     nationality = models.CharField(max_length=255)
+    addresses = models.ManyToManyField(Address)
 
     def __str__(self):
-        return "{} {} {}".format(
-            self.first_name,
-            self.middle_name,
-            self.given_name,
-        )
+        full_name = ""
+        full_name += self.first_name
+
+        if self.middle_name:
+            full_name += " " + self.middle_name
+        if self.maiden_name:
+            full_name += " " + self.maiden_name
+        else:
+            full_name += " " + self.given_name
+
+        return full_name
+
 
     def clean(self):
         errors={}
-
 
         if self.maiden_name is not None:
             if self.SINGLE == self.marital_status:
@@ -76,12 +104,10 @@ class Personal(models.Model):
             if self.gender is not self.FEMALE:
                 errors['maiden_name'] = _('For female only')
 
-        if self.titles is not None:
-            try:
-                validate(instance=self.titles, schema=self.TITLES_SCHEMA)
-            except JsonValidationError as e:
-                print(self.titles)
-                errors['titles']= _('bad title')
-
         if errors:
             raise ValidationError(errors)
+
+class PersonalTitle(models.Model):
+    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
+    title = models.ForeignKey(Title, on_delete=models.CASCADE)
+    order = models.IntegerField(null=True, blank=True)
