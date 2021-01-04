@@ -28,6 +28,7 @@ type Personal {
   maiden_name: String
   gender: Gender!
   date_of_birth: Date!
+  marital_status: Enum
   skin_tone: Enum
   eyes_color: String
   height: Int
@@ -43,6 +44,7 @@ type Address {
   address_line_one: String!
   address_line_two: String!
   street: String!
+  city: String!
   apt_building: String 
   postal_code: String
   state: String
@@ -101,12 +103,14 @@ type Campus {
   id: ID!
   name: String
 }
+
 type Building {
   id: ID!
   name: String
   demension: Demension
   flood: Int
 }
+
 type Room {
   id: ID!
   building: Building!
