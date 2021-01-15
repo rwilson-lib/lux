@@ -5,20 +5,6 @@ import uuid
 
 # from db_mixing import TimeStampMixin
 
-class Address(models.Model):
-    address_line_one = models.CharField(max_length=255)
-    address_line_two = models.CharField(max_length=255, blank=True, null=True)
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    apt_building = models.CharField(max_length=255, blank=True, null=True)
-    postal_code = models.CharField(max_length=10, blank=True, null=True)
-    providence = models.CharField(max_length=255, blank=True, null=True)
-    state = models.CharField(max_length=255, blank=True, null=True)
-    country = models.CharField(max_length=2)
-
-    def __str__(self):
-        return self.address_line_one
-
 class Title(models.Model):
     title = models.CharField(max_length=255)
     abbr = models.CharField(max_length=10, null=True, blank=True)
@@ -39,14 +25,14 @@ class Personal(models.Model):
     SINGLE = "SI"
     WIDOWED = "WI"
 
-    AMBER = 1
-    BLACK = 2
-    BLUE = 3
-    BROWN = 4
-    GRAY = 5
-    GREEN = 6
-    HAZEL = 7
-    RED_ALBINO = 8
+    AMBER = "AR"
+    BLACK = "BK"
+    BLUE = "BE"
+    BROWN = "BN"
+    GRAY = "GY"
+    GREEN = "GN"
+    HAZEL = "HL"
+    RED_ALBINO = "RA"
 
     MARITAL_STATUS = [
         ( MARRIED, "Married" ),
@@ -60,7 +46,7 @@ class Personal(models.Model):
         (BLACK, "Black"),
         (BLUE, "Blue"),
         (BROWN, "Brown"),
-        (GRAY, "gray"),
+        (GRAY, "Gray"),
         (GREEN, "Green"),
         (HAZEL, "Hazel"),
         (RED_ALBINO, "Red Albino")
@@ -83,13 +69,12 @@ class Personal(models.Model):
     date_of_birth = models.DateField(max_length=255)
     marital_status = models.CharField(max_length=2,  choices=MARITAL_STATUS, null=True, blank=True)
     skin_tone = models.CharField(max_length=255, null=True, blank=True)
-    eyes_color = models.CharField(max_length=255, choices=EYES_COLORS, null=True, blank=True)
+    eyes_color = models.CharField(max_length=2, choices=EYES_COLORS, null=True, blank=True)
     height  = models.CharField(max_length=255, null=True, blank=True)
     weight = models.CharField(max_length=255, null=True, blank=True)
     nationality = models.CharField(max_length=255)
 
     titles = models.ManyToManyField(Title, through='PersonalTitle')
-    addresses = models.ManyToManyField(Address)
 
     def __str__(self):
         full_name = ""
@@ -115,6 +100,23 @@ class Personal(models.Model):
 
         if errors:
             raise ValidationError(errors)
+
+class Address(models.Model):
+    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
+    address_line_one = models.CharField(max_length=255)
+    address_line_two = models.CharField(max_length=255, blank=True, null=True)
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    apt_building = models.CharField(max_length=255, blank=True, null=True)
+    postal_code = models.CharField(max_length=10, blank=True, null=True)
+    providence = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=2)
+    label = models.CharField(max_length=10, blank=True, null=True)
+
+    def __str__(self):
+        return self.address_line_one
+
 
 class PersonalTitle(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
