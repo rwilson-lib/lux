@@ -14,6 +14,7 @@ type Contact{
 type Document {
   id: ID!
 }
+
 type Country {
   name: String
   country_code: CountryCode
@@ -53,12 +54,34 @@ type Address {
   oid: Readonly!
 }
 
+type Instructor {
+  id: ID!
+  personal: Personal
+  contacts: [Json]
+}
+
 
 type Institution {
   id: ID!
   name: String!
   year_founded: Date!
   contact: [Contact]
+}
+
+type School {
+  id: ID!
+  institution: Instruction!
+  name: String!
+  type: Type
+  logo: Img
+  motto: String
+}
+
+type Administrator {
+  id: ID!
+  personal: Personal
+  contacts: [Contact]
+
 }
 
 type Parent {
@@ -71,19 +94,6 @@ type Student {
   id: ID!
   personal: Personal!
   contacts: [Json]
-}
-
-type Instructor {
-  id: ID!
-  personal: Personal
-  contacts: [Json]
-}
-
-type Administrator {
-  id: ID!
-  personal: Personal
-  contacts: [Contact]
-
 }
 
 type AcademicYear {

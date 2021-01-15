@@ -28,22 +28,42 @@ class Title(models.Model):
         return self.title if self.abbr is None else self.abbr
 
 class Personal(models.Model):
-    MALE = "M"
     FEMALE = "F"
-    OTHER = "O"
+    MALE = "M"
     NOT_SAY = "X"
+    OTHER = "O"
 
-    MARRIED = "MA"
-    WIDOWED = "WI"
-    SEPARATED = "SE"
     DIVORCED = "DI"
+    MARRIED = "MA"
+    SEPARATED = "SE"
     SINGLE = "SI"
+    WIDOWED = "WI"
+
+    AMBER = 1
+    BLACK = 2
+    BLUE = 3
+    BROWN = 4
+    GRAY = 5
+    GREEN = 6
+    HAZEL = 7
+    RED_ALBINO = 8
 
     MARITAL_STATUS = [
         ( MARRIED, "Married" ),
         ( WIDOWED, "Widowed" ),
         ( DIVORCED, "Divorced" ),
         ( SINGLE, "Single" ),
+    ]
+
+    EYES_COLORS = [
+        (AMBER, "Amber"),
+        (BLACK, "Black"),
+        (BLUE, "Blue"),
+        (BROWN, "Brown"),
+        (GRAY, "gray"),
+        (GREEN, "Green"),
+        (HAZEL, "Hazel"),
+        (RED_ALBINO, "Red Albino")
     ]
 
     GENDER = [
@@ -53,20 +73,8 @@ class Personal(models.Model):
         (NOT_SAY, "Not Say")
     ]
 
-    TITLES_SCHEMA = {
-        "type" : "object",
-        "properties" : {
-            "title" : {
-                "type" : "string"
-            },
-            "order" : {
-                "type" : "number"
-            }
-        }
-    }
-
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    titles = models.ManyToManyField(Title, through='PersonalTitle')
+
     first_name = models.CharField(max_length=255)
     given_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, null=True, blank=True)
@@ -74,11 +82,13 @@ class Personal(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER)
     date_of_birth = models.DateField(max_length=255)
     marital_status = models.CharField(max_length=2,  choices=MARITAL_STATUS, null=True, blank=True)
-    skin_tone = models.CharField(max_length=255)
-    eyes_color = models.CharField(max_length=255)
-    height  = models.CharField(max_length=255)
-    weight = models.CharField(max_length=255)
+    skin_tone = models.CharField(max_length=255, null=True, blank=True)
+    eyes_color = models.CharField(max_length=255, choices=EYES_COLORS, null=True, blank=True)
+    height  = models.CharField(max_length=255, null=True, blank=True)
+    weight = models.CharField(max_length=255, null=True, blank=True)
     nationality = models.CharField(max_length=255)
+
+    titles = models.ManyToManyField(Title, through='PersonalTitle')
     addresses = models.ManyToManyField(Address)
 
     def __str__(self):
