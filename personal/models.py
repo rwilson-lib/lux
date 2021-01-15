@@ -1,4 +1,6 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import validate_email
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 import uuid
@@ -121,4 +123,22 @@ class Address(models.Model):
 class PersonalTitle(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
     title = models.ForeignKey(Title, on_delete=models.CASCADE)
-    order = models.IntegerField(null=True, blank=True)
+    order = models.IntegerField(default=0, null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class Contact(models.Model):
+    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
+    type = models.CharField(max_length=25)
+    value = models.CharField(max_length=255, unique=True)
+    label = models.CharField(max_length=10, blank=True, null=True)
+
+    def __str__(self):
+        return "{} {}".format(self.value, self.label)
+
+    def clean(self):
+        self.type = str(self.type).lower()
+        if  self.type == 'email':
+            validate_email(self.value)
