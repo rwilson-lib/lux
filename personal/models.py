@@ -142,3 +142,17 @@ class Contact(models.Model):
         self.type = str(self.type).lower()
         if  self.type == 'email':
             validate_email(self.value)
+
+class Document(models.Model):
+    path = models.CharField(max_length=255)
+    type = models.CharField(max_length=25)
+    title = models.CharField(max_length=255, unique=True)
+    label = models.CharField(max_length=10, blank=True, null=True)
+    issue_date = models.DateField(blank=True, null=True)
+    expire_date = models.DateField(blank=True, null=True)
+    issuer = models.CharField(max_length=10, blank=True, null=True)
+    validation_url = models.URLField(blank=True, null=True)
+    validation_code = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
