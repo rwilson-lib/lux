@@ -45,6 +45,20 @@ class Address(models.Model):
     def __str__(self):
         return self.address_line_one
 
+class Document(models.Model):
+    path = models.CharField(max_length=255, blank=True, null=True)
+    type = models.CharField(max_length=25, blank=True, null=True)
+    title = models.CharField(max_length=255, unique=True, blank=True, null=True)
+    label = models.CharField(max_length=10, blank=True, null=True)
+    issue_date = models.DateField(blank=True, null=True)
+    expire_date = models.DateField(blank=True, null=True)
+    issuer = models.CharField(max_length=10, blank=True, null=True)
+    validation_url = models.URLField(blank=True, null=True)
+    validation_code = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return "{}".format(self.title)
+
 
 class Personal(models.Model):
     FEMALE = "F"
@@ -110,6 +124,7 @@ class Personal(models.Model):
     titles = models.ManyToManyField(Title, through='PersonalTitle')
     contacts = models.ManyToManyField(Contact, through='PersonalContact')
     addresses = models.ManyToManyField(Address, through='PersonalAddress')
+    documents = models.ManyToManyField(Document, through='PersonalDocument')
 
     def __str__(self):
         full_name = ""
@@ -164,16 +179,7 @@ class PersonalContact(models.Model):
         unique_together = ('personal','contact')
 
 
-class Document(models.Model):
-    path = models.CharField(max_length=255, blank=True, null=True)
-    type = models.CharField(max_length=25, blank=True, null=True)
-    title = models.CharField(max_length=255, unique=True, blank=True, null=True)
-    label = models.CharField(max_length=10, blank=True, null=True)
-    issue_date = models.DateField(blank=True, null=True)
-    expire_date = models.DateField(blank=True, null=True)
-    issuer = models.CharField(max_length=10, blank=True, null=True)
-    validation_url = models.URLField(blank=True, null=True)
-    validation_code = models.CharField(max_length=100, blank=True, null=True)
-
-    def __str__(self):
-        return "{}".format(self.title)
+class PersonalDocument(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
+    document = models.ForeignKey(Document, on_delete=models.CASCADE)
