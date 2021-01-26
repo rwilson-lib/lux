@@ -7,6 +7,7 @@ import uuid
 
 # from db_mixing import TimeStampMixin
 
+
 class Title(models.Model):
     title = models.CharField(max_length=255)
     abbr = models.CharField(max_length=10, null=True, blank=True)
@@ -14,6 +15,36 @@ class Title(models.Model):
 
     def __str__(self):
         return self.title if self.abbr is None else self.abbr
+
+
+class Contact(models.Model):
+    type = models.CharField(max_length=25)
+    value = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return "{}".format(self.value)
+
+    def clean(self):
+        self.type = str(self.type).lower()
+        if  self.type == 'email':
+            validate_email(self.value)
+
+
+class Address(models.Model):
+    address_line_one = models.CharField(max_length=255)
+    address_line_two = models.CharField(max_length=255, blank=True, null=True)
+    street = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    apt_building = models.CharField(max_length=255, blank=True, null=True)
+    postal_code = models.CharField(max_length=10, blank=True, null=True)
+    providence = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=2)
+    label = models.CharField(max_length=10, blank=True, null=True)
+
+    def __str__(self):
+        return self.address_line_one
+
 
 class Personal(models.Model):
     FEMALE = "F"
@@ -77,6 +108,8 @@ class Personal(models.Model):
     nationality = models.CharField(max_length=255)
 
     titles = models.ManyToManyField(Title, through='PersonalTitle')
+    contacts = models.ManyToManyField(Contact, through='PersonalContact')
+    addresses = models.ManyToManyField(Address, through='PersonalAddress')
 
     def __str__(self):
         full_name = ""
@@ -103,50 +136,38 @@ class Personal(models.Model):
         if errors:
             raise ValidationError(errors)
 
-class Address(models.Model):
-    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
-    address_line_one = models.CharField(max_length=255)
-    address_line_two = models.CharField(max_length=255, blank=True, null=True)
-    street = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    apt_building = models.CharField(max_length=255, blank=True, null=True)
-    postal_code = models.CharField(max_length=10, blank=True, null=True)
-    providence = models.CharField(max_length=255, blank=True, null=True)
-    state = models.CharField(max_length=255, blank=True, null=True)
-    country = models.CharField(max_length=2)
-    label = models.CharField(max_length=10, blank=True, null=True)
-
-    def __str__(self):
-        return self.address_line_one
-
 
 class PersonalTitle(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
     title = models.ForeignKey(Title, on_delete=models.CASCADE)
     order = models.IntegerField(default=0, null=True, blank=True)
 
-    def __str__(self):
-        return self.title
+    class Meta:
+        unique_together = ('personal','title')
 
 
-class Contact(models.Model):
+class PersonalAddress(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
-    type = models.CharField(max_length=25)
-    value = models.CharField(max_length=255, unique=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE)
     label = models.CharField(max_length=10, blank=True, null=True)
 
-    def __str__(self):
-        return "{} {}".format(self.value, self.label)
+    class Meta:
+        unique_together = ('personal','address')
 
-    def clean(self):
-        self.type = str(self.type).lower()
-        if  self.type == 'email':
-            validate_email(self.value)
+
+class PersonalContact(models.Model):
+    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
+    contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
+    label = models.CharField(max_length=10, blank=True, null=True)
+
+    class Meta:
+        unique_together = ('personal','contact')
+
 
 class Document(models.Model):
-    path = models.CharField(max_length=255)
-    type = models.CharField(max_length=25)
-    title = models.CharField(max_length=255, unique=True)
+    path = models.CharField(max_length=255, blank=True, null=True)
+    type = models.CharField(max_length=25, blank=True, null=True)
+    title = models.CharField(max_length=255, unique=True, blank=True, null=True)
     label = models.CharField(max_length=10, blank=True, null=True)
     issue_date = models.DateField(blank=True, null=True)
     expire_date = models.DateField(blank=True, null=True)
