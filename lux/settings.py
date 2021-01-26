@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'instructor',
     'institution',
     'school',
+    'campus',
 
     # 'classify',
     # 'scheduler',
