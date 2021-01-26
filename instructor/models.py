@@ -3,7 +3,6 @@ import uuid
 
 from personal.models import Personal
 
-# Create your models here.
 
 class Instructor(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
