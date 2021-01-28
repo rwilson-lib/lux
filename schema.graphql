@@ -55,9 +55,9 @@ type Address {
 }
 
 type Instructor {
-  id: ID!
-  personal: Personal
-  contacts: [Json]
+  id: id!
+  personal: personal
+  contacts: [json]
 }
 
 
@@ -118,7 +118,7 @@ type Building {
   id: ID!
   name: String
   demension: Demension
-  flood: Int
+  elevation: Int
 }
 
 type Room {
