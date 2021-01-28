@@ -1,10 +1,14 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 import uuid
 
 
-from personal.models import Personal
+# from academic.models import AcademicYear
+
 from institution.models import Institution, ISCEDLevel
 from instructor.models import Instructor
+from personal.models import Personal
 from student.models import Student
 
 
@@ -15,23 +19,11 @@ class School(models.Model):
     motto = models.CharField(max_length=25)
     mascot = models.ImageField(null=True, blank=True)
     logo = models.ImageField(null=True, blank=True)
-    levels = models.ManyToManyField(ISCEDLevel)
+    divisions = models.ManyToManyField(ISCEDLevel)
     year_founded = models.DateField()
 
     def __str__(self):
         return "{} -:- {}".format(self.institution.name, self.name)
-
-
-class AcademicYear(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
-    name = models.CharField(max_length=25)
-    semester = models.CharField(max_length=25)
-    start_date = models.DateField()
-    end_date = models.DateField()
-
-    def __str__(self):
-        return self.name
 
 
 class Course(models.Model):
@@ -44,6 +36,7 @@ class Course(models.Model):
 
     def __str__(self):
         return "{} {} {}hr".format(self.title, self.code, self.credit_hour)
+
 
 class CourseInstructor(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -75,10 +68,10 @@ class SchoolCourse(models.Model):
 
 class Enroll(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    school = models.ForeignKey(School, on_delete=models.CASCADE)
+    student = models.OneToOneField(Student, on_delete=models.CASCADE)
+    school = models.OneToOneField(School, on_delete=models.CASCADE)
     id_number = models.CharField(max_length=25, unique=True)
-    academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
+    # academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
 
 
     def __str__(self):
@@ -89,8 +82,33 @@ class Postion(models.Model):
     postion = models.CharField(max_length=25)
     description = models.TextField()
 
+    def __str__(self):
+        return self.postion
+
 
 class Staff(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
+    emp_id = models.CharField(max_length=25,unique=True)
+    personal = models.OneToOneField(Personal, on_delete=models.CASCADE)
     postions = models.ManyToManyField(Postion)
+
+    def __str__(self):
+        return self.personal.__str__()
+
+
+class StudentStatus(models.Model):
+    class YearInSchool(models.TextChoices):
+        FRESHMAN = 'FR', _('Freshman')
+        SOPHOMORE = 'SO', _('Sophomore')
+        JUNIOR = 'JR', _('Junior')
+        SENIOR = 'SR', _('Senior')
+        GRADUATE = 'GR', _('Graduate')
+
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+ #    academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
+    enroll = models.ForeignKey(Enroll, on_delete=models.CASCADE)
+    status = models.CharField(
+        max_length=2,
+        choices=YearInSchool.choices
+    )

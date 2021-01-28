@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-from .models import AcademicYear
 from .models import College
 from .models import Course
 from .models import Enroll
@@ -11,7 +10,6 @@ from .models import SchoolCourse
 from .models import CollegeCourse
 from .models import CourseInstructor # need to add school instructor
 
-admin.site.register(AcademicYear)
 admin.site.register(College)
 admin.site.register(Course)
 admin.site.register(Enroll)
