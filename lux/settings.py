@@ -45,10 +45,9 @@ INSTALLED_APPS = [
     'institution',
     'school',
     'campus',
-
-    # 'classify',
-    # 'scheduler',
-    # 'section',
+    'assembly',
+    'scheduler',
+    'academic',
 ]
 
 MIDDLEWARE = [
