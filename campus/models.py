@@ -20,7 +20,7 @@ class Campus(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     institution = models.ForeignKey(Institution, on_delete=models.CASCADE)
     name = models.CharField(max_length=25)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE)
     schools = models.ManyToManyField(School, through='SchoolCampus')
 
     def __str__(self):
@@ -78,6 +78,9 @@ class SchoolCampus(models.Model):
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ("school", "campus")
+
     def __str__(self):
         return "{} {}".format(self.school.name, self.campus.name)
 
@@ -87,6 +90,9 @@ class CollegeCampus(models.Model):
     college = models.ForeignKey(College, on_delete=models.CASCADE)
     campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ("college", "campus")
+
     def __str__(self):
         return "{} {}".format(self.college.name, self.campus.name)
 
@@ -95,15 +101,20 @@ class CollegeCampus(models.Model):
 class CourseCampus(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
+    campus = models.OneToOneField(Campus, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "{} {}".format(self.course.name, self.campus.name)
+        return "{} {}".format(self.course.title, self.campus.name)
+
 
 class CampusStaff(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     staff = models.ForeignKey(Staff, on_delete=models.CASCADE)
     campus = models.ForeignKey(Campus, on_delete=models.CASCADE)
 
+    class Meta:
+        unique_together = ('staff', 'campus')
+
+
     def __str__(self):
-        return "{}".format(self.campus.name)
+        return "{} {}".format(self.campus.name, self.staff)
