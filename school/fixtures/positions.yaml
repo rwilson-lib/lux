@@ -1,0 +1,357 @@
+---
+
+- model: school.position
+  fields:
+    position: Academic Support Coordinator
+    description: None
+
+- model: school.position
+  fields:
+    position: Administrator
+    description: None
+
+- model: school.position
+  fields:
+    position: Admissions Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Admissions Representative
+    description: None
+- model: school.position
+
+  fields:
+    position: Adjunct Professor
+    description: None
+- model: school.position
+
+  fields:
+    position: Adviser
+    description: None
+- model: school.position
+
+  fields:
+    position: After-School Program Aide
+    description: None
+- model: school.position
+
+  fields:
+    position: After-School Program Coordinator
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Coach
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Dean
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Instructor
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Principal
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Preschool Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Professor
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Registrar
+    description: None
+- model: school.position
+
+  fields:
+    position: Assistant Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Associate Dean
+    description: None
+- model: school.position
+
+  fields:
+    position: Associate Professor
+    description: None
+- model: school.position
+
+  fields:
+    position: Career Counselor
+    description: None
+- model: school.position
+
+  fields:
+    position: Child Care Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Child Care Center Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Coach
+    description: None
+- model: school.position
+
+  fields:
+    position: Crossing Guard
+    description: None
+- model: school.position
+
+  fields:
+    position: Day Care Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Day Care Center Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Dean
+    description: None
+- model: school.position
+
+  fields:
+    position: Driver Education Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Education Coordinator
+    description: None
+- model: school.position
+
+  fields:
+    position: Education Specialist
+    description: None
+- model: school.position
+
+  fields:
+    position: Education Technician
+    description: None
+- model: school.position
+
+  fields:
+    position: Educator
+    description: None
+- model: school.position
+
+  fields:
+    position: Financial Aid Administrator
+    description: None
+- model: school.position
+
+  fields:
+    position: Food Service Aide
+    description: None
+- model: school.position
+
+  fields:
+    position: Food Service Coordinator
+    description: None
+- model: school.position
+
+  fields:
+    position: Food Service Manager
+    description: None
+- model: school.position
+
+  fields:
+    position: Guidance Counselor
+    description: None
+- model: school.position
+
+  fields:
+    position: Instructor
+    description: None
+- model: school.position
+
+  fields:
+    position: Instructional Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Lead Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Lunch Monitor
+    description: None
+- model: school.position
+
+  fields:
+    position: Preschool Assistant Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Preschool Director
+    description: None
+- model: school.position
+
+  fields:
+    position: Preschool Group Leader
+    description: None
+- model: school.position
+
+  fields:
+    position: Preschool Lead Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Preschool Specialist
+    description: None
+- model: school.position
+
+  fields:
+    position: Preschool Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Principal
+    description: None
+- model: school.position
+
+  fields:
+    position: Program Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Program Coordinator
+    description: None
+- model: school.position
+
+  fields:
+    position: Registrar
+    description: None
+- model: school.position
+
+  fields:
+    position: Residence Hall Manager
+    description: None
+- model: school.position
+
+  fields:
+    position: Resource Development Coordinator
+    description: None
+- model: school.position
+
+  fields:
+    position: School Administrator
+    description: None
+- model: school.position
+
+  fields:
+    position: School Bus Driver
+    description: None
+- model: school.position
+
+  fields:
+    position: School Counselor
+    description: None
+- model: school.position
+
+  fields:
+    position: School Librarian
+    description: None
+- model: school.position
+
+  fields:
+    position: School Nurse
+    description: None
+- model: school.position
+
+  fields:
+    position: School Psychologist
+    description: None
+- model: school.position
+
+  fields:
+    position: School Secretary
+    description: None
+- model: school.position
+
+  fields:
+    position: School Social Worker
+    description: None
+- model: school.position
+
+  fields:
+    position: Special Education Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Special Education Coordinator
+    description: None
+- model: school.position
+
+  fields:
+    position: Substitute Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Superintendent
+    description: None
+- model: school.position
+
+  fields:
+    position: Superintendent of Schools
+    description: None
+- model: school.position
+
+  fields:
+    position: Teacher
+    description: None
+- model: school.position
+
+  fields:
+    position: Teacher Aide
+    description: None
+- model: school.position
+
+  fields:
+    position: Teacher Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Teaching Assistant
+    description: None
+- model: school.position
+
+  fields:
+    position: Tutor
+    description: None
+
+- model: school.position
+  fields:
+    position: Youth Care Worker
+    description: None
+

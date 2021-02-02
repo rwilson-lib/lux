@@ -1,0 +1,974 @@
+---
+
+- model: personal.country
+  fields:
+    name: Afghanistan
+    code: AF
+- model: personal.country
+  fields:
+    name: Åland Islands
+    code: AX
+- model: personal.country
+  fields:
+    name: Albania
+    code: AL
+- model: personal.country
+  fields:
+    name: Algeria
+    code: DZ
+- model: personal.country
+  fields:
+    name: American Samoa
+    code: AS
+- model: personal.country
+  fields:
+    name: AndorrA
+    code: AD
+- model: personal.country
+  fields:
+    name: Angola
+    code: AO
+- model: personal.country
+  fields:
+    name: Anguilla
+    code: AI
+- model: personal.country
+  fields:
+    name: Antarctica
+    code: AQ
+- model: personal.country
+  fields:
+    name: Antigua and Barbuda
+    code: AG
+- model: personal.country
+  fields:
+    name: Argentina
+    code: AR
+- model: personal.country
+  fields:
+    name: Armenia
+    code: AM
+- model: personal.country
+  fields:
+    name: Aruba
+    code: AW
+- model: personal.country
+  fields:
+    name: Australia
+    code: AU
+- model: personal.country
+  fields:
+    name: Austria
+    code: AT
+- model: personal.country
+  fields:
+    name: Azerbaijan
+    code: AZ
+- model: personal.country
+  fields:
+    name: Bahamas
+    code: BS
+- model: personal.country
+  fields:
+    name: Bahrain
+    code: BH
+- model: personal.country
+  fields:
+    name: Bangladesh
+    code: BD
+- model: personal.country
+  fields:
+    name: Barbados
+    code: BB
+- model: personal.country
+  fields:
+    name: Belarus
+    code: BY
+- model: personal.country
+  fields:
+    name: Belgium
+    code: BE
+- model: personal.country
+  fields:
+    name: Belize
+    code: BZ
+- model: personal.country
+  fields:
+    name: Benin
+    code: BJ
+- model: personal.country
+  fields:
+    name: Bermuda
+    code: BM
+- model: personal.country
+  fields:
+    name: Bhutan
+    code: BT
+- model: personal.country
+  fields:
+    name: Bolivia
+    code: BO
+- model: personal.country
+  fields:
+    name: Bosnia and Herzegovina
+    code: BA
+- model: personal.country
+  fields:
+    name: Botswana
+    code: BW
+- model: personal.country
+  fields:
+    name: Bouvet Island
+    code: BV
+- model: personal.country
+  fields:
+    name: Brazil
+    code: BR
+- model: personal.country
+  fields:
+    name: British Indian Ocean Territory
+    code: IO
+- model: personal.country
+  fields:
+    name: Brunei Darussalam
+    code: BN
+- model: personal.country
+  fields:
+    name: Bulgaria
+    code: BG
+- model: personal.country
+  fields:
+    name: Burkina Faso
+    code: BF
+- model: personal.country
+  fields:
+    name: Burundi
+    code: BI
+- model: personal.country
+  fields:
+    name: Cambodia
+    code: KH
+- model: personal.country
+  fields:
+    name: Cameroon
+    code: CM
+- model: personal.country
+  fields:
+    name: Canada
+    code: CA
+- model: personal.country
+  fields:
+    name: Cape Verde
+    code: CV
+- model: personal.country
+  fields:
+    name: Cayman Islands
+    code: KY
+- model: personal.country
+  fields:
+    name: Central African Republic
+    code: CF
+- model: personal.country
+  fields:
+    name: Chad
+    code: TD
+- model: personal.country
+  fields:
+    name: Chile
+    code: CL
+- model: personal.country
+  fields:
+    name: China
+    code: CN
+- model: personal.country
+  fields:
+    name: Christmas Island
+    code: CX
+- model: personal.country
+  fields:
+    name: Cocos (Keeling) Islands
+    code: CC
+- model: personal.country
+  fields:
+    name: Colombia
+    code: CO
+- model: personal.country
+  fields:
+    name: Comoros
+    code: KM
+- model: personal.country
+  fields:
+    name: Congo
+    code: CG
+- model: personal.country
+  fields:
+    name: Congo, The Democratic Republic of the
+    code: CD
+- model: personal.country
+  fields:
+    name: Cook Islands
+    code: CK
+- model: personal.country
+  fields:
+    name: Costa Rica
+    code: CR
+- model: personal.country
+  fields:
+    name: 'Cote D Ivoire '
+    code: 'CI '
+- model: personal.country
+  fields:
+    name: Croatia
+    code: HR
+- model: personal.country
+  fields:
+    name: Cuba
+    code: CU
+- model: personal.country
+  fields:
+    name: Cyprus
+    code: CY
+- model: personal.country
+  fields:
+    name: Czech Republic
+    code: CZ
+- model: personal.country
+  fields:
+    name: Denmark
+    code: DK
+- model: personal.country
+  fields:
+    name: Djibouti
+    code: DJ
+- model: personal.country
+  fields:
+    name: Dominica
+    code: DM
+- model: personal.country
+  fields:
+    name: Dominican Republic
+    code: DO
+- model: personal.country
+  fields:
+    name: Ecuador
+    code: EC
+- model: personal.country
+  fields:
+    name: Egypt
+    code: EG
+- model: personal.country
+  fields:
+    name: El Salvador
+    code: SV
+- model: personal.country
+  fields:
+    name: Equatorial Guinea
+    code: GQ
+- model: personal.country
+  fields:
+    name: Eritrea
+    code: ER
+- model: personal.country
+  fields:
+    name: Estonia
+    code: EE
+- model: personal.country
+  fields:
+    name: Ethiopia
+    code: ET
+- model: personal.country
+  fields:
+    name: Falkland Islands (Malvinas)
+    code: FK
+- model: personal.country
+  fields:
+    name: Faroe Islands
+    code: FO
+- model: personal.country
+  fields:
+    name: Fiji
+    code: FJ
+- model: personal.country
+  fields:
+    name: Finland
+    code: FI
+- model: personal.country
+  fields:
+    name: France
+    code: FR
+- model: personal.country
+  fields:
+    name: French Guiana
+    code: GF
+- model: personal.country
+  fields:
+    name: French Polynesia
+    code: PF
+- model: personal.country
+  fields:
+    name: French Southern Territories
+    code: TF
+- model: personal.country
+  fields:
+    name: Gabon
+    code: GA
+- model: personal.country
+  fields:
+    name: Gambia
+    code: GM
+- model: personal.country
+  fields:
+    name: Georgia
+    code: GE
+- model: personal.country
+  fields:
+    name: Germany
+    code: DE
+- model: personal.country
+  fields:
+    name: Ghana
+    code: GH
+- model: personal.country
+  fields:
+    name: Gibraltar
+    code: GI
+- model: personal.country
+  fields:
+    name: Greece
+    code: GR
+- model: personal.country
+  fields:
+    name: Greenland
+    code: GL
+- model: personal.country
+  fields:
+    name: Grenada
+    code: GD
+- model: personal.country
+  fields:
+    name: Guadeloupe
+    code: GP
+- model: personal.country
+  fields:
+    name: Guam
+    code: GU
+- model: personal.country
+  fields:
+    name: Guatemala
+    code: GT
+- model: personal.country
+  fields:
+    name: Guernsey
+    code: GG
+- model: personal.country
+  fields:
+    name: Guinea
+    code: GN
+- model: personal.country
+  fields:
+    name: Guinea-Bissau
+    code: GW
+- model: personal.country
+  fields:
+    name: Guyana
+    code: GY
+- model: personal.country
+  fields:
+    name: Haiti
+    code: HT
+- model: personal.country
+  fields:
+    name: Heard Island and Mcdonald Islands
+    code: HM
+- model: personal.country
+  fields:
+    name: Holy See (Vatican City State)
+    code: VA
+- model: personal.country
+  fields:
+    name: Honduras
+    code: HN
+- model: personal.country
+  fields:
+    name: Hong Kong
+    code: HK
+- model: personal.country
+  fields:
+    name: Hungary
+    code: HU
+- model: personal.country
+  fields:
+    name: Iceland
+    code: IS
+- model: personal.country
+  fields:
+    name: India
+    code: IN
+- model: personal.country
+  fields:
+    name: Indonesia
+    code: ID
+- model: personal.country
+  fields:
+    name: Iran, Islamic Republic Of
+    code: IR
+- model: personal.country
+  fields:
+    name: Iraq
+    code: IQ
+- model: personal.country
+  fields:
+    name: Ireland
+    code: IE
+- model: personal.country
+  fields:
+    name: Isle of Man
+    code: IM
+- model: personal.country
+  fields:
+    name: Israel
+    code: IL
+- model: personal.country
+  fields:
+    name: Italy
+    code: IT
+- model: personal.country
+  fields:
+    name: Jamaica
+    code: JM
+- model: personal.country
+  fields:
+    name: Japan
+    code: JP
+- model: personal.country
+  fields:
+    name: Jersey
+    code: JE
+- model: personal.country
+  fields:
+    name: Jordan
+    code: JO
+- model: personal.country
+  fields:
+    name: Kazakhstan
+    code: KZ
+- model: personal.country
+  fields:
+    name: Kenya
+    code: KE
+- model: personal.country
+  fields:
+    name: Kiribati
+    code: KI
+- model: personal.country
+  fields:
+    name: Democratic People Republic of Korea
+    code: 'KP '
+- model: personal.country
+  fields:
+    name: Korea, Republic of
+    code: KR
+- model: personal.country
+  fields:
+    name: Kuwait
+    code: KW
+- model: personal.country
+  fields:
+    name: Kyrgyzstan
+    code: KG
+- model: personal.country
+  fields:
+    name: 'Democratic People Republic of Lao '
+    code: LA
+- model: personal.country
+  fields:
+    name: Latvia
+    code: LV
+- model: personal.country
+  fields:
+    name: Lebanon
+    code: LB
+- model: personal.country
+  fields:
+    name: Lesotho
+    code: LS
+- model: personal.country
+  fields:
+    name: Liberia
+    code: LR
+- model: personal.country
+  fields:
+    name: Libyan Arab Jamahiriya
+    code: LY
+- model: personal.country
+  fields:
+    name: Liechtenstein
+    code: LI
+- model: personal.country
+  fields:
+    name: Lithuania
+    code: LT
+- model: personal.country
+  fields:
+    name: Luxembourg
+    code: LU
+- model: personal.country
+  fields:
+    name: Macao
+    code: MO
+- model: personal.country
+  fields:
+    name: Macedonia, The Former Yugoslav Republic of
+    code: MK
+- model: personal.country
+  fields:
+    name: Madagascar
+    code: MG
+- model: personal.country
+  fields:
+    name: Malawi
+    code: MW
+- model: personal.country
+  fields:
+    name: Malaysia
+    code: MY
+- model: personal.country
+  fields:
+    name: Maldives
+    code: MV
+- model: personal.country
+  fields:
+    name: Mali
+    code: ML
+- model: personal.country
+  fields:
+    name: Malta
+    code: MT
+- model: personal.country
+  fields:
+    name: Marshall Islands
+    code: MH
+- model: personal.country
+  fields:
+    name: Martinique
+    code: MQ
+- model: personal.country
+  fields:
+    name: Mauritania
+    code: MR
+- model: personal.country
+  fields:
+    name: Mauritius
+    code: MU
+- model: personal.country
+  fields:
+    name: Mayotte
+    code: YT
+- model: personal.country
+  fields:
+    name: Mexico
+    code: MX
+- model: personal.country
+  fields:
+    name: Micronesia, Federated States of
+    code: FM
+- model: personal.country
+  fields:
+    name: Moldova, Republic of
+    code: MD
+- model: personal.country
+  fields:
+    name: Monaco
+    code: MC
+- model: personal.country
+  fields:
+    name: Mongolia
+    code: MN
+- model: personal.country
+  fields:
+    name: Montserrat
+    code: MS
+- model: personal.country
+  fields:
+    name: Morocco
+    code: MA
+- model: personal.country
+  fields:
+    name: Mozambique
+    code: MZ
+- model: personal.country
+  fields:
+    name: Myanmar
+    code: MM
+- model: personal.country
+  fields:
+    name: Namibia
+    code: NA
+- model: personal.country
+  fields:
+    name: Nauru
+    code: NR
+- model: personal.country
+  fields:
+    name: Nepal
+    code: NP
+- model: personal.country
+  fields:
+    name: Netherlands
+    code: NL
+- model: personal.country
+  fields:
+    name: Netherlands Antilles
+    code: AN
+- model: personal.country
+  fields:
+    name: New Caledonia
+    code: NC
+- model: personal.country
+  fields:
+    name: New Zealand
+    code: NZ
+- model: personal.country
+  fields:
+    name: Nicaragua
+    code: NI
+- model: personal.country
+  fields:
+    name: Niger
+    code: NE
+- model: personal.country
+  fields:
+    name: Nigeria
+    code: NG
+- model: personal.country
+  fields:
+    name: Niue
+    code: NU
+- model: personal.country
+  fields:
+    name: Norfolk Island
+    code: NF
+- model: personal.country
+  fields:
+    name: Northern Mariana Islands
+    code: MP
+- model: personal.country
+  fields:
+    name: Norway
+    code: 'NO'
+- model: personal.country
+  fields:
+    name: Oman
+    code: OM
+- model: personal.country
+  fields:
+    name: Pakistan
+    code: PK
+- model: personal.country
+  fields:
+    name: Palau
+    code: PW
+- model: personal.country
+  fields:
+    name: Palestinian Territory, Occupied
+    code: PS
+- model: personal.country
+  fields:
+    name: Panama
+    code: PA
+- model: personal.country
+  fields:
+    name: Papua New Guinea
+    code: PG
+- model: personal.country
+  fields:
+    name: Paraguay
+    code: PY
+- model: personal.country
+  fields:
+    name: Peru
+    code: PE
+- model: personal.country
+  fields:
+    name: Philippines
+    code: PH
+- model: personal.country
+  fields:
+    name: Pitcairn
+    code: PN
+- model: personal.country
+  fields:
+    name: Poland
+    code: PL
+- model: personal.country
+  fields:
+    name: Portugal
+    code: PT
+- model: personal.country
+  fields:
+    name: Puerto Rico
+    code: PR
+- model: personal.country
+  fields:
+    name: Qatar
+    code: QA
+- model: personal.country
+  fields:
+    name: Reunion
+    code: RE
+- model: personal.country
+  fields:
+    name: Romania
+    code: RO
+- model: personal.country
+  fields:
+    name: Russian Federation
+    code: RU
+- model: personal.country
+  fields:
+    name: RWANDA
+    code: RW
+- model: personal.country
+  fields:
+    name: Saint Helena
+    code: SH
+- model: personal.country
+  fields:
+    name: Saint Kitts and Nevis
+    code: KN
+- model: personal.country
+  fields:
+    name: Saint Lucia
+    code: LC
+- model: personal.country
+  fields:
+    name: Saint Pierre and Miquelon
+    code: PM
+- model: personal.country
+  fields:
+    name: Saint Vincent and the Grenadines
+    code: VC
+- model: personal.country
+  fields:
+    name: Samoa
+    code: WS
+- model: personal.country
+  fields:
+    name: San Marino
+    code: SM
+- model: personal.country
+  fields:
+    name: Sao Tome and Principe
+    code: ST
+- model: personal.country
+  fields:
+    name: Saudi Arabia
+    code: SA
+- model: personal.country
+  fields:
+    name: Senegal
+    code: SN
+- model: personal.country
+  fields:
+    name: Serbia and Montenegro
+    code: CS
+- model: personal.country
+  fields:
+    name: Seychelles
+    code: SC
+- model: personal.country
+  fields:
+    name: Sierra Leone
+    code: SL
+- model: personal.country
+  fields:
+    name: Singapore
+    code: SG
+- model: personal.country
+  fields:
+    name: Slovakia
+    code: SK
+- model: personal.country
+  fields:
+    name: Slovenia
+    code: SI
+- model: personal.country
+  fields:
+    name: Solomon Islands
+    code: SB
+- model: personal.country
+  fields:
+    name: Somalia
+    code: SO
+- model: personal.country
+  fields:
+    name: South Africa
+    code: ZA
+- model: personal.country
+  fields:
+    name: South Georgia and the South Sandwich Islands
+    code: GS
+- model: personal.country
+  fields:
+    name: Spain
+    code: ES
+- model: personal.country
+  fields:
+    name: Sri Lanka
+    code: LK
+- model: personal.country
+  fields:
+    name: Sudan
+    code: SD
+- model: personal.country
+  fields:
+    name: Suriname
+    code: SR
+- model: personal.country
+  fields:
+    name: Svalbard and Jan Mayen
+    code: SJ
+- model: personal.country
+  fields:
+    name: Swaziland
+    code: SZ
+- model: personal.country
+  fields:
+    name: Sweden
+    code: SE
+- model: personal.country
+  fields:
+    name: Switzerland
+    code: CH
+- model: personal.country
+  fields:
+    name: Syrian Arab Republic
+    code: SY
+- model: personal.country
+  fields:
+    name: Taiwan, Province of China
+    code: TW
+- model: personal.country
+  fields:
+    name: Tajikistan
+    code: TJ
+- model: personal.country
+  fields:
+    name: Tanzania, United Republic of
+    code: TZ
+- model: personal.country
+  fields:
+    name: Thailand
+    code: TH
+- model: personal.country
+  fields:
+    name: Timor-Leste
+    code: TL
+- model: personal.country
+  fields:
+    name: Togo
+    code: TG
+- model: personal.country
+  fields:
+    name: Tokelau
+    code: TK
+- model: personal.country
+  fields:
+    name: Tonga
+    code: TO
+- model: personal.country
+  fields:
+    name: Trinidad and Tobago
+    code: TT
+- model: personal.country
+  fields:
+    name: Tunisia
+    code: TN
+- model: personal.country
+  fields:
+    name: Turkey
+    code: TR
+- model: personal.country
+  fields:
+    name: Turkmenistan
+    code: TM
+- model: personal.country
+  fields:
+    name: Turks and Caicos Islands
+    code: TC
+- model: personal.country
+  fields:
+    name: Tuvalu
+    code: TV
+- model: personal.country
+  fields:
+    name: Uganda
+    code: UG
+- model: personal.country
+  fields:
+    name: Ukraine
+    code: UA
+- model: personal.country
+  fields:
+    name: United Arab Emirates
+    code: AE
+- model: personal.country
+  fields:
+    name: United Kingdom
+    code: GB
+- model: personal.country
+  fields:
+    name: United States
+    code: US
+- model: personal.country
+  fields:
+    name: United States Minor Outlying Islands
+    code: UM
+- model: personal.country
+  fields:
+    name: Uruguay
+    code: UY
+- model: personal.country
+  fields:
+    name: Uzbekistan
+    code: UZ
+- model: personal.country
+  fields:
+    name: Vanuatu
+    code: VU
+- model: personal.country
+  fields:
+    name: Venezuela
+    code: VE
+- model: personal.country
+  fields:
+    name: Viet Nam
+    code: VN
+- model: personal.country
+  fields:
+    name: Virgin Islands, British
+    code: VG
+- model: personal.country
+  fields:
+    name: Virgin Islands, U.S.
+    code: VI
+- model: personal.country
+  fields:
+    name: Wallis and Futuna
+    code: WF
+- model: personal.country
+  fields:
+    name: Western Sahara
+    code: EH
+- model: personal.country
+  fields:
+    name: Yemen
+    code: YE
+- model: personal.country
+  fields:
+    name: Zambia
+    code: ZM
+- model: personal.country
+  fields:
+    name: Zimbabwe
+    code: ZW
