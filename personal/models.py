@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.core.validators import validate_email
+from django.core.validators import validate_email, URLValidator
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -11,7 +11,7 @@ import uuid
 class Title(models.Model):
     title = models.CharField(max_length=255)
     abbr = models.CharField(max_length=10, null=True, blank=True)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title if self.abbr is None else self.abbr
@@ -48,9 +48,16 @@ class Contact(models.Model):
         return "{}".format(self.value)
 
     def clean(self):
+        errors={}
         self.type = str(self.type).lower()
+        if  self.type == 'url':
+            URLValidator(self.value)
         if  self.type == 'email':
-            validate_email(self.value)
+            print(validate_email(self.value))
+        else:
+            errors['type'] = _("not accepting type of {}".format(self.type))
+        if errors:
+            raise ValidationError(errors)
 
 
 class Address(models.Model):
@@ -62,8 +69,10 @@ class Address(models.Model):
     postal_code = models.CharField(max_length=10, blank=True, null=True)
     providence = models.CharField(max_length=255, blank=True, null=True)
     state = models.CharField(max_length=255, blank=True, null=True)
-    country = models.CharField(max_length=2)
+    country = models.ForeignKey('Country', on_delete=models.CASCADE)
     label = models.CharField(max_length=10, blank=True, null=True)
+    longitude = models.CharField(max_length=10, blank=True, null=True)
+    latitude = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):
         return self.address_line_one
@@ -148,8 +157,7 @@ class Personal(models.Model):
     eyes_color = models.CharField(max_length=2, choices=EyesColor.choices, null=True, blank=True)
     height  = models.CharField(max_length=255, null=True, blank=True)
     weight = models.CharField(max_length=255, null=True, blank=True)
-    nationality = models.CharField(max_length=2)
-
+    nationality = models.ForeignKey('Country', on_delete=models.CASCADE)
     titles = models.ManyToManyField(Title, through='PersonalTitle')
     suffixes = models.ManyToManyField(Suffix, through='PersonalSuffix')
     contacts = models.ManyToManyField(Contact, through='PersonalContact')
@@ -160,26 +168,42 @@ class Personal(models.Model):
         full_name = ""
         full_name += self.first_name
 
-        if self.middle_name:
-            full_name += " " + self.middle_name
-        if self.maiden_name:
-            full_name += " " + self.maiden_name
-        else:
-            full_name += " " + self.given_name
+        if self.middle_name: full_name += " " + self.middle_name
+        if self.maiden_name: full_name += " " + self.maiden_name
+        else: full_name += " " + self.given_name
 
         return full_name
 
 
     def clean(self):
+
         errors={}
-        if self.maiden_name is not None:
-            if self.Gender.SINGLE == self.marital_status:
-                errors['maiden_name'] = _('Not allow for Single')
-            if self.Gender.FEMALE is not self.gender:
+
+        if self.maiden_name:
+            if self.gender != self.Gender.FEMALE:
                 errors['maiden_name'] = _('For female only')
+            if self.marital_status is None:
+                errors['maiden_name'] = _('Please select a Marital Status before setting this field')
+            if self.marital_status == self.MaritalStatus.SINGLE:
+                errors['maiden_name'] = _('Cannot be set for Single individuals')
+        if self.weight:
+            try:
+                value, unit = str(self.weight).split('_')
+                value = float(value)
+            except ValueError as e:
+                errors['weight'] = _('Error: did you include a unit in the format VALUE_UNIT')
+        if self.height:
+            try:
+                values = str(self.height).split('-')
+                for value in values:
+                    value, unit = str(value).split('_')
+                    value = float(value)
+            except ValueError as e:
+                errors['height'] = _('Please check your height')
 
         if errors:
             raise ValidationError(errors)
+
 
 
 class PersonalTitle(models.Model):
@@ -190,6 +214,10 @@ class PersonalTitle(models.Model):
     class Meta:
         unique_together = ('personal','title')
 
+    def __str__(self):
+        return "{} {}".format(self.title, self.personal)
+
+
 class PersonalSuffix(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
     suffix = models.ForeignKey(Suffix, on_delete=models.CASCADE)
@@ -197,6 +225,7 @@ class PersonalSuffix(models.Model):
 
     class Meta:
         unique_together = ('personal','suffix')
+
 
 class PersonalAddress(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
@@ -209,7 +238,7 @@ class PersonalAddress(models.Model):
 
 class PersonalContact(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
-    contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
+    contact = models.OneToOneField(Contact, on_delete=models.CASCADE)
     label = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
@@ -221,3 +250,14 @@ class PersonalDocument(models.Model):
     personal = models.ForeignKey(Personal, on_delete=models.CASCADE)
     document = models.ForeignKey(Document, on_delete=models.CASCADE)
 
+
+class Country(models.Model):
+    name = models.CharField(max_length=100)
+    code = models.CharField(max_length=2)
+
+    def __str__(self):
+        return self.name
+
+
+class CountryState(models.Model):
+    pass
