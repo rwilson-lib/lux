@@ -36,8 +36,6 @@ class InstitutionDocument(models.Model):
 
 
 class ISCEDLevel(models.Model):
-
-
     class Level(models.TextChoices):
         PRE_KINDERGARDEN = 'PREK'
         KINDERGARDEN     = 'KIND'
@@ -69,7 +67,7 @@ class ISCEDLevel(models.Model):
     category = models.CharField(max_length=2, choices=Category.choices,
                                  blank=True, null=True)
     level    = models.CharField(max_length=4, choices=Level.choices)
-    grade    = models.CharField(max_length=6)
+    grade    = models.CharField(max_length=10)
     ages     = models.CharField(max_length=6)
     duration = models.CharField(max_length=6)
 
